@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+    {% load staticfiles %}
+    {% block head %} {% endblock head %}
+
+    <link rel="stylesheet" href="{% static 'signup/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'signup/signup.css' %}" >
+
+</head>
+<body>
+
+    {% block content %}   {% endblock content %}
+
+    <script src="{% static 'signup/bootstrap.min.js' %}"></script>
+    <script src="{% static 'signup/jquery.js' %}"></script>
+    
+</body>
+</html>
