@@ -1,21 +1,33 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  
-    {% load staticfiles %}
-    {% block head %} {% endblock head %}
 
-    <link rel="stylesheet" href="{% static 'signup/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" >
     <link rel="stylesheet" href="{% static 'signup/signup.css' %}" >
+    <link rel="stylesheet" href="{% static 'pickadate/lib/themes/default.css' %}">
+    <link rel="stylesheet" href="{% static 'pickadate/lib/themes/default.date.css' %}">
+    <link rel="stylesheet" href="{% static 'pickadate/lib/themes/default.time.css' %}">
 
+
+    {% block head %} {% endblock head %}
 </head>
+
 <body>
+
 
     {% block content %}   {% endblock content %}
 
-    <script src="{% static 'signup/bootstrap.min.js' %}"></script>
-    <script src="{% static 'signup/jquery.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pickadate/lib/picker.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pickadate/lib/picker.date.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pickadate/lib/picker.time.js' %}"></script>
+    <script type="text/javascript" src="{% static 'signup/signup.js' %}"></script>
+
     
 </body>
 </html>

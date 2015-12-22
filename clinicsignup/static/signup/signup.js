@@ -1,0 +1,6 @@
+$('#appointmentDate').pickadate()
+
+
+
+
+$('#appointmentTime').pickatime()

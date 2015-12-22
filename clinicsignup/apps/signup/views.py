@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 from .forms import *
+from .models import Doctor
 
 
 def index(request):
@@ -14,13 +15,5 @@ def index(request):
         else:
                 form = SignupForm()
 
-        return render(request,'signup/form.html',{'form':form})
-            
-
-
-
-
-
-
-
-
+        doctor_list = Doctor.objects.all()
+        return render(request,'signup/form.html',{'form':form, 'doctor_list' : doctor_list})
