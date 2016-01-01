@@ -1,0 +1,11 @@
+$('#appointmentDate').pickadate()
+
+
+
+
+$('#appointmentTime').pickatime({
+    min:9,
+    max:18
+})
+
+

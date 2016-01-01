@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles }
+{% load staticfiles %}
 
 
 {% block head %}
@@ -15,31 +15,40 @@
 
       <h1 ="col-lg-offset-1"> Signup Form </h1>
 
-      <form class="form-horizontal ">
+      <form class="form-horizontal" method="post" action="{% url 'signup:index' %}">
 	{% csrf_token %}
 
+	{% if form.errors %}
+	<div class="alert alert-error">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		{% for field in form %} 
+			{% if field.errors %}
+			<li>{{ field.label }}: {{ field.errors|striptags }}</li>
+			{% endif %}
+		{% endfor %}
+	</div>
+	{% endif %}	
+
 	<div class="form-group">
-	  {{ form.patient_first_name.errors }}
-	  <input type="text" id="pfnInput" class="form-control" placeholder="First Name">
+	  <input type="text" id="pfnInput" class="form-control" placeholder="First Name" name="patient_first_name">
 	</div>
 	
 	<div class="form-group">
-	  {{ form.patient_last_name.errors }}
-	  <input type="text" id="plnInput" class="form-control" placeholder="Last Name">
+	  <input type="text" id="plnInput" class="form-control" placeholder="Last Name" name="patient_last_name">
 	</div>
 
 	<div class="form-group">
-	  {{ form.patient_last_name.errors }}
-	  <input type="text" id="pmnInput" class="form-control" placeholder="Middle Name">
+
+	  <input type="text" id="pmnInput" class="form-control" placeholder="Middle Name" name="patient_middle_name">
 	</div>
 
 	<div class="form-group">
 	  <label for="selectDoctor" class="col-md-3 control-label"> Choose a Doctor </label>
 	  <div class="col-md-7">
-	    <select class="form-control" id="selectDoctor">
-	      <option selected="selected"> ------ </option>
+	    <select class="form-control" id="selectDoctor" name="doctor">
+	      <option selected="selected" value="bla bla bla"> ------ </option> 
 	      {% for doctor in doctor_list %}
-              <option> {{ doctor.doctor_full_name }} </option>
+              <option value="{{ doctor.id }}"> {{ doctor.doctor_full_name }} </option>
 	      {% endfor %}
 	    </select>
 	  </div>
@@ -48,14 +57,14 @@
 	<div class="form-group">
 	  <label for="appointmentDate" class="col-md-3 control-label"> Choose a Date </label>
 	  <div class="col-md-7">
-	    <input type="text" id="appointmentDate" class="form-control">
+	    <input type="text" id="appointmentDate" class="form-control" name="appointment_date">
 	  </div>
 	</div>
 
 	<div class="form-group">
 	  <label for="appointmentTime" class="col-md-3 control-label"> Choose a Time </label>
 	  <div class="col-md-7">
-	    <input type="text" id="appointmentTime" class="form-control"> 
+	    <input type="text" id="appointmentTime" class="form-control" name="appointment_time">  
 	  </div>
 	</div>
 

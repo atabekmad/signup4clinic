@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from apps.signup import urls
+from apps.signup.views import luck
 
 urlpatterns = [
+    url(r'', include('apps.signup.urls', namespace="signup")),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', include('apps.signup.urls'))
+
 ]
