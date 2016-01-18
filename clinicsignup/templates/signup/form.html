@@ -3,21 +3,27 @@
 
 
 {% block head %}
+
+<link rel="stylesheet" href="{% static 'signup/form.css' %}" >
 <title> Signup For a Doctor </title>
+
 {% endblock head %}
 
 
 {% block content %}
 
 <div class="container">
+
   <div class="row">
+
     <div class="col-lg-8 col-lg-offset-2 text-center ">
 
       <h1 ="col-lg-offset-1"> Signup Form </h1>
 
-      <form class="form-horizontal" method="post" action="{% url 'signup:index' %}">
+      <form class="form-horizontal" id="signup-form" method="post" action="{% url 'signup:index' %}">
 	{% csrf_token %}
 
+	<!-- ERRORS  -->
 	{% if form.errors %}
 	<div class="alert alert-error">
 		<button type="button" class="close" data-dismiss="alert">×</button>
@@ -29,22 +35,25 @@
 	</div>
 	{% endif %}	
 
+	<!-- FIRST NAME INPUT FIELD -->
 	<div class="form-group">
 	  <input type="text" id="pfnInput" class="form-control" placeholder="First Name" name="patient_first_name">
 	</div>
-	
+
+	<!-- LAST NAME INPUT FIELD -->
 	<div class="form-group">
 	  <input type="text" id="plnInput" class="form-control" placeholder="Last Name" name="patient_last_name">
 	</div>
 
+	<!-- MIDDLE NAME INPUT FIELD -->
 	<div class="form-group">
-
 	  <input type="text" id="pmnInput" class="form-control" placeholder="Middle Name" name="patient_middle_name">
 	</div>
 
-	<div class="form-group">
-	  <label for="selectDoctor" class="col-md-3 control-label"> Choose a Doctor </label>
-	  <div class="col-md-7">
+	<!-- DOCTOR SELECT -->
+	<div class="form-group text-left">
+	  <label for="selectDoctor" class="col-md-4 control-label"> Choose a Doctor </label>
+	  <div class="col-md-6">
 	    <select class="form-control" id="selectDoctor" name="doctor">
 	      <option selected="selected" value="bla bla bla"> ------ </option> 
 	      {% for doctor in doctor_list %}
@@ -54,23 +63,33 @@
 	  </div>
 	</div>
 
-	<div class="form-group">
-	  <label for="appointmentDate" class="col-md-3 control-label"> Choose a Date </label>
-	  <div class="col-md-7">
-	    <input type="text" id="appointmentDate" class="form-control" name="appointment_date">
+
+	<!-- DATE AND TIME INPUT FIELDS -->
+	</br>
+	<div class="form-group text-right">
+	  <div class="col-md-4">
+	    <label for="datepicker" > Choose date </label>
+	  </div>
+	  <div class="col-md-3">
+	    <input type="text" id="datepicker" class="form-control" name="appointment_date">
+	  </div>
+	</div>
+	<div class="form-group text-right">
+	  <div class="col-md-4">
+	    <label for="timepicker"> Choose time </label>
+	  </div>
+	  <div class="col-md-3">
+	    <input type="text" id="timepicker" class="form-control" name="appointment_time">  
 	  </div>
 	</div>
 
-	<div class="form-group">
-	  <label for="appointmentTime" class="col-md-3 control-label"> Choose a Time </label>
-	  <div class="col-md-7">
-	    <input type="text" id="appointmentTime" class="form-control" name="appointment_time">  
-	  </div>
-	</div>
+
 
 	<div class="form-group">
+	  <div class="col-md-11">
 	  <br/>
 	  <input type="submit" value="Submit" /> 
+	  </div>
 	</div>
 
     </form>
@@ -81,3 +100,18 @@
 {% endblock content %}
 
 
+
+
+	<!-- <div class="form-group"> -->
+	<!--   <label for="appointmentDate" class="col-md-3 control-label"> Choose a Date </label> -->
+	<!--   <div class="col-md-7"> -->
+	<!--     <input type="text" id="appointmentDate" class="form-control" name="appointment_date"> -->
+	<!--   </div> -->
+	<!-- </div> -->
+
+	<!-- <div class="form-group"> -->
+	<!--   <label for="appointmentTime" class="col-md-3 control-label"> Choose a Time </label> -->
+	<!--   <div class="col-md-7"> -->
+	<!--     <input type="text" id="appointmentTime" class="form-control" name="appointment_time">   -->
+	<!--   </div> -->
+	<!-- </div> -->

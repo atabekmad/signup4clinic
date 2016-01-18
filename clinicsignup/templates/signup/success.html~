@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+
+{% block content %}
+
+YAY SUCCESS!!!
+
+<a href="{% url signup:form' %}"> Go back </a>
+
+{% endblock content %}

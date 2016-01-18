@@ -5,3 +5,8 @@ body {
 .normal {
     font-weight: normal;
 }
+
+label {
+    text-align: left;
+}
+
